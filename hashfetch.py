@@ -2,8 +2,14 @@
 import vt
 import time
 
-with open("apikey.txt", "r") as f:
-    apikey = f.readline().strip()
+
+try:
+    with open("apikey.txt", "r") as f:
+        apikey = f.readline().strip()
+except:
+        print("\n[❌] Error: \"apikey.txt\" not found. Create the file, add Virustotal API key, save it and try again.")
+        time.sleep(11)
+        exit()    
 
 client = vt.Client(apikey)
 
